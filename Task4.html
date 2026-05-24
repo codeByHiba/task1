@@ -1,0 +1,630 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Digital Library</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Open Sans',sans-serif;
+      background:#081b29;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    h1,h2,h3{
+      font-family:'Poppins',sans-serif;
+    }
+
+    /* Navbar */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:#0b2538;
+      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+    }
+
+    .navbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 8%;
+    }
+
+    .logo{
+      font-size:28px;
+      font-weight:700;
+      color:#ffd166;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:25px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:white;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .nav-links a:hover{
+      color:#ffd166;
+    }
+
+    .menu-btn{
+      display:none;
+      font-size:28px;
+      cursor:pointer;
+    }
+
+    /* Hero Section */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:60px 8%;
+      gap:60px;
+    }
+
+    .hero-text{
+      flex:1;
+    }
+
+    .hero-text h1{
+      font-size:55px;
+      margin-bottom:20px;
+      line-height:1.2;
+    }
+
+    .hero-text p{
+      color:#d4d4d4;
+      margin-bottom:25px;
+      line-height:1.8;
+    }
+
+    .search-box{
+      display:flex;
+      background:white;
+      border-radius:50px;
+      overflow:hidden;
+      width:100%;
+      max-width:500px;
+    }
+
+    .search-box input{
+      flex:1;
+      border:none;
+      padding:15px;
+      outline:none;
+    }
+
+    .search-box button{
+      border:none;
+      background:#ffd166;
+      padding:15px 25px;
+      cursor:pointer;
+      font-weight:bold;
+    }
+
+    .hero img{
+      width:420px;
+      max-width:100%;
+      border-radius:20px;
+      box-shadow:0 10px 25px rgba(0,0,0,0.5);
+      animation:float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%{transform:translateY(0);}
+      50%{transform:translateY(-10px);}
+      100%{transform:translateY(0);}
+    }
+
+    /* Books */
+
+    .section-title{
+      text-align:center;
+      font-size:40px;
+      margin-bottom:50px;
+      color:#ffd166;
+    }
+
+    .books{
+      padding:80px 8%;
+    }
+
+    .book-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .book-card{
+      background:#102c44;
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      box-shadow:0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .book-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .book-card img{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+    }
+
+    .book-content{
+      padding:20px;
+    }
+
+    .book-content h3{
+      margin-bottom:10px;
+    }
+
+    .book-content p{
+      color:#ccc;
+      margin-bottom:15px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:10px 20px;
+      background:#ffd166;
+      color:black;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      background:white;
+    }
+
+    /* Categories */
+
+    .categories{
+      padding:80px 8%;
+    }
+
+    .category-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+      gap:20px;
+    }
+
+    .category{
+      background:#102c44;
+      padding:40px 20px;
+      text-align:center;
+      border-radius:20px;
+      transition:0.3s;
+    }
+
+    .category:hover{
+      background:#ffd166;
+      color:black;
+      transform:scale(1.05);
+    }
+
+    .category i{
+      font-size:40px;
+      margin-bottom:15px;
+    }
+
+    /* About */
+
+    .about{
+      display:flex;
+      align-items:center;
+      gap:50px;
+      padding:80px 8%;
+    }
+
+    .about img{
+      width:420px;
+      max-width:100%;
+      border-radius:20px;
+    }
+
+    .about-text{
+      flex:1;
+    }
+
+    .about-text p{
+      margin-top:20px;
+      line-height:1.8;
+      color:#ddd;
+    }
+
+    /* Contact */
+
+    .contact{
+      padding:80px 8%;
+    }
+
+    .contact form{
+      max-width:700px;
+      margin:auto;
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    .contact input,
+    .contact textarea{
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      outline:none;
+    }
+
+    .contact button{
+      padding:15px;
+      border:none;
+      background:#ffd166;
+      border-radius:10px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    /* Footer */
+
+    footer{
+      background:#06131d;
+      padding:30px;
+      text-align:center;
+    }
+
+    .socials{
+      margin-bottom:15px;
+    }
+
+    .socials i{
+      font-size:22px;
+      margin:0 10px;
+      transition:0.3s;
+      cursor:pointer;
+    }
+
+    .socials i:hover{
+      color:#ffd166;
+    }
+
+    /* Back to top */
+
+    #topBtn{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      background:#ffd166;
+      color:black;
+      border:none;
+      width:45px;
+      height:45px;
+      border-radius:50%;
+      cursor:pointer;
+      display:none;
+      font-size:20px;
+    }
+
+    /* Responsive */
+
+    @media(max-width:768px){
+
+      .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+      .nav-links{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        margin-top:20px;
+      }
+
+      .nav-links.active{
+        display:flex;
+      }
+
+      .menu-btn{
+        display:block;
+        position:absolute;
+        right:30px;
+        top:20px;
+      }
+
+      .hero{
+        flex-direction:column;
+        text-align:center;
+      }
+
+      .hero-text h1{
+        font-size:38px;
+      }
+
+      .about{
+        flex-direction:column;
+      }
+
+      .search-box{
+        margin:auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <header>
+    <nav class="navbar">
+      <div class="logo">Smart Library</div>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#books">Books</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+      <h1>Welcome to Smart Digital Library</h1>
+
+      <p>
+        Explore thousands of books, improve your knowledge,
+        and enjoy a modern reading experience anywhere anytime.
+      </p>
+
+      <div class="search-box">
+        <input type="text" placeholder="Search your favorite books">
+        <button>Search</button>
+      </div>
+    </div>
+
+    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=1200&auto=format&fit=crop" alt="Library">
+
+  </section>
+
+  <!-- Books -->
+
+  <section class="books" id="books">
+
+    <h2 class="section-title">Featured Books</h2>
+
+    <div class="book-grid">
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>Atomic Habits</h3>
+          <p>James Clear</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>Rich Dad Poor Dad</h3>
+          <p>Robert Kiyosaki</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>Think & Grow Rich</h3>
+          <p>Napoleon Hill</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1519682337058-a94d519337bc?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>The Psychology</h3>
+          <p>Morgan Housel</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>Deep Work</h3>
+          <p>Cal Newport</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=1200&auto=format&fit=crop">
+        <div class="book-content">
+          <h3>Programming Basics</h3>
+          <p>John Smith</p>
+          <a href="#" class="btn">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Categories -->
+
+  <section class="categories" id="categories">
+
+    <h2 class="section-title">Book Categories</h2>
+
+    <div class="category-grid">
+
+      <div class="category">
+        <i class="fas fa-book"></i>
+        <h3>Fiction</h3>
+      </div>
+
+      <div class="category">
+        <i class="fas fa-flask"></i>
+        <h3>Science</h3>
+      </div>
+
+      <div class="category">
+        <i class="fas fa-landmark"></i>
+        <h3>History</h3>
+      </div>
+
+      <div class="category">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Programming</h3>
+      </div>
+
+      <div class="category">
+        <i class="fas fa-microchip"></i>
+        <h3>Technology</h3>
+      </div>
+
+      <div class="category">
+        <i class="fas fa-feather"></i>
+        <h3>Novels</h3>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- About -->
+
+  <section class="about">
+
+    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop">
+
+    <div class="about-text">
+      <h2 class="section-title">About Library</h2>
+
+      <p>
+        Smart Digital Library is a modern platform designed
+        for students and readers who love knowledge and learning.
+        Explore books, discover categories, and enjoy a beautiful
+        responsive experience on all devices.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+
+  <section class="contact" id="contact">
+
+    <h2 class="section-title">Contact Us</h2>
+
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="6" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div class="socials">
+      <i class="fab fa-facebook"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-twitter"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+
+    <p>© 2026 Smart Digital Library | All Rights Reserved</p>
+
+  </footer>
+
+  <!-- Back To Top -->
+
+  <button id="topBtn">
+    ↑
+  </button>
+
+  <script>
+    // Mobile Menu
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.onclick = () => {
+      navLinks.classList.toggle("active");
+    };
+
+    // Back To Top
+
+    const topBtn = document.getElementById("topBtn");
+
+    window.onscroll = () => {
+
+      if(document.documentElement.scrollTop > 300){
+        topBtn.style.display = "block";
+      }else{
+        topBtn.style.display = "none";
+      }
+    };
+
+    topBtn.onclick = () => {
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+    };
+
+    // Search Button
+
+    const searchBtn = document.querySelector(".search-box button");
+
+    searchBtn.addEventListener("click", () => {
+      alert("Book search feature coming soon!");
+    });
+
+  </script>
+
+</body>
+</html>

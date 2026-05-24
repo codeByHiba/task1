@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Personal Story</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f5f5f5; /* soft light gray */
+    color: #333;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #d6cfc1 0%, #ece6dd 100%); /* soft light brown gradient */
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.hero img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #a68a64; /* brown border */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    transition: transform 0.5s ease;
+}
+
+.hero img:hover {
+    transform: scale(1.05);
+}
+
+/* TITLE */
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: #8b6f47; /* dark brown */
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #555555;
+    margin-top: 5px;
+}
+
+/* SECTION BASE */
+.section {
+    margin: 40px auto;
+    padding: 35px;
+    max-width: 850px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+/* GRAY + LIGHT BROWN BOXES */
+.story-box {
+    background: linear-gradient(135deg, #ece6dd, #d6cfc1); /* light brown gradient */
+}
+
+.vision-box {
+    background: linear-gradient(135deg, #f0f0f0, #d9d9d9); /* soft gray gradient */
+}
+
+.future-box {
+    background: linear-gradient(135deg, #d6cfc1, #f5f5f5); /* light brown to gray */
+}
+
+/* HEADINGS */
+.story-title, .vision-title, .future-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    padding-left: 12px;
+    border-left: 6px solid;
+    border:doted;
+    margin-bottom: 15px;
+}
+
+.story-title { border-color: #8b6f47; color: #8b6f47; }
+.vision-title { border-color: #555555; color: #555555; }
+.future-title { border-color: #a68a64; color: #a68a64; }
+
+/* TEXT */
+p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #3e3e3e;
+    margin: 12px 0;
+}
+
+/* CODE BOX */
+.code-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: #d6cfc1; /* soft brown */
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    font-weight: 500;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    font-size: 15px;
+    color: #fff;
+    background: #8b6f47; /* dark brown */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<div class="hero">
+    <img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Business Woman">
+    <h1>Petal of My Path</h1>
+    <p>"A little about who I am and how I grew."</p>
+</div>
+
+<!-- STORY -->
+<div class="section story-box">
+    <h2 class="story-title">My Story</h2>
+    <p>
+       I am someone who believes in growing a little every day.
+       My journey is full of small lessons and meaningful moments.
+       I enjoy learning new things and expressing myself creatively.
+       Dreams inspire me, and hard work keeps me moving forward.
+       I am still becoming the best version of myself.
+    </p>
+</div>
+
+<!-- VISION -->
+<div class="section vision-box">
+    <h2 class="vision-title">My Vision</h2>
+    <p>
+        I want to build a unique career and stand out by doing something different. Creativity is my strength.
+    </p>
+</div>
+
+<!-- FUTURE -->
+<div class="section future-box">
+    <h2 class="future-title">My Future Goals</h2>
+    <p>
+        I dream of building a future filled with success and happiness.
+        Step by step, I am working towards turning my dreams into reality.
+    </p>
+
+    <div class="code-box">
+        This page contains big dreams ✨
+    </div>
+</div>
+
+<footer>
+    Created by Hiba
+</footer>
+
+</body>
+</html>
